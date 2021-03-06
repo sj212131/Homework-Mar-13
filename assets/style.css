@@ -1,0 +1,34 @@
+* {
+    font-family: 'RocknRoll One', sans-serif,serif;
+}
+
+:root {
+    --navBg: #7FFFD4;
+;
+  }
+
+.header {
+    background-color: var(--navBg);
+    padding: 1rem;
+}
+
+h1 {
+    font-size: xx-large;
+    width: 100%;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1rem;
+}
+
+.btn {
+    background-color: var(--navBg);
+    border-color: var(--navBg);
+    color: black;
+}
+
+.col {
+    background-color: var(--navBg);
+    text-align: center;
+}

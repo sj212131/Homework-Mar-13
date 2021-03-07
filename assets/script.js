@@ -139,11 +139,8 @@ function addHistory(){
         historyListItem.addEventListener("click", function(){
             weatherInfo(historyListItem.value);
         })
-        // searchHisEl.empty();
-        searchHisEl.append(historyListItem);
     }
-};
-
-if (searchHis.length > 0) {
-    weatherInfo(searchHis[searchHis.length - 1]);
+        console.log(searchHisEl)
+        searchHisEl.append(historyListItem);
+        console.log(searchHisEl)
 };

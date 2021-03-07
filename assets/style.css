@@ -38,8 +38,6 @@ h2 {
     text-align: center;
 }
 
-
-
 .UVBackgroundLow {
     background-color: var(--low);
 }
@@ -58,4 +56,12 @@ h2 {
 
 .UVBackgroundExtra {
     background-color: var(--Extra);
+}
+
+.form-control:hover {
+    cursor: pointer;
+}
+
+#city-input:hover {
+    cursor:text;
 }

@@ -15,7 +15,7 @@ if (localStorage.getItem("search")) {
 };
 console.log(searchHis);
 
-weatherInfo("brooklyn")//worked Delete after!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+weatherInfo("Baltimore")//worked Delete after!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 //api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 function weatherInfo(cityName){
@@ -48,26 +48,30 @@ function weatherInfo(cityName){
             var UVQueryURL = "http:api.openweathermap.org/data/2.5/uvi?lat=" + latVal + "&lon=" + lonVal + "&appid=" + APIKey;
             console.log(UVQueryURL)
             fetch(UVQueryURL)
-                .then(function(response){
-                    console.log(response);
-                    // var UVRes = response.json();
-                    var UVIndex = document.createElement("span");
-                    UVIndex.setAttribute("class","UV");
-                    // if (response.value < 3) {
-                    //     UVIndex.addclass("UVBackgroundLow");
-                    // } if (response.value >= 3 && response.value < 6) {
-                    //     UVIndex.addclass("UVBackgroundMod");
-                    // } if (response.value >= 6 && response.value < 8) {
-                    //     UVIndex.addclass("UVBackgroundHigh");
-                    // } if (response.value >= 8 && response.value < 11) {
-                    //     UVIndex.addclass("UVBackgroundVHigh");
-                    // } if (response.value >= 11) {
-                    //     UVIndex.addclass("UVBackgroundExtra");
-                    // } 
-                    console.log(response);
-                    UVIndex.innerHTML = response.value;
-                    currentUVEl.text("UV Index: ");
-                    currentUVEl.append(response.value);
+                .then(function (response) {
+                if (!response.ok){
+                    throw response.json();
+                }
+                return response.json();
+            })
+                .then(function(UVRes){
+                    console.log(UVRes);
+                    console.log(UVRes.value);
+                    
+                    currentUVEl.append(UVRes.value);
+                    if (UVRes.value < 3) {
+                        currentUVEl.addClass("UVBackgroundLow");
+                    } if (UVRes.value >= 3 && UVRes.value < 6) {
+                        currentUVEl.addClass("UVBackgroundMod");
+                    } if (UVRes.value >= 6 && UVRes.value < 8) {
+                        currentUVEl.addClass("UVBackgroundHigh");
+                    } if (UVRes.value >= 8 && UVRes.value < 11) {
+                        currentUVEl.addClass("UVBackgroundVHigh");
+                    } if (UVRes.value >= 11) {
+                        currentUVEl.addClass("UVBackgroundExtra");
+                    } 
+                    
+                    
                 })
         })
 

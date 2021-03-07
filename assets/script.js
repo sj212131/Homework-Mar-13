@@ -53,6 +53,7 @@ function weatherInfo(cityName){
                 return response.json();
             })
                 .then(function(UVRes){
+                    currentUVEl.removeAttr('class')
                     if (UVRes.value < 3) {
                         currentUVEl.addClass("UVBackgroundLow");
                     } if (UVRes.value >= 3 && UVRes.value < 6) {

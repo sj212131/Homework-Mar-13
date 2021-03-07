@@ -64,6 +64,7 @@ function weatherInfo(cityName){
                     } if (UVRes.value >= 11) {
                         currentUVEl.addClass("UVBackgroundExtra");
                     }   
+                    currentUVEl.empty();
                     currentUVEl.append(UVRes.value);
                 })
         
@@ -138,6 +139,11 @@ function addHistory(){
         historyListItem.addEventListener("click", function(){
             weatherInfo(historyListItem.value);
         })
-        searchHisEl.append(historyListItem)
+        // searchHisEl.empty();
+        searchHisEl.append(historyListItem);
     }
+};
+
+if (searchHis.length > 0) {
+    weatherInfo(searchHis[searchHis.length - 1]);
 };

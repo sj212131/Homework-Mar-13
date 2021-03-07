@@ -49,8 +49,10 @@ function weatherInfo(cityName){
             console.log(UVQueryURL)
             fetch(UVQueryURL)
                 .then(function(response){
+                    console.log(response);
+                    // var UVRes = response.json();
                     var UVIndex = document.createElement("span");
-                    
+                    UVIndex.setAttribute("class","UV");
                     // if (response.value < 3) {
                     //     UVIndex.addclass("UVBackgroundLow");
                     // } if (response.value >= 3 && response.value < 6) {
@@ -62,10 +64,10 @@ function weatherInfo(cityName){
                     // } if (response.value >= 11) {
                     //     UVIndex.addclass("UVBackgroundExtra");
                     // } 
-                    console.log(response.value)
-                    UVIndex.text(response.value);
+                    console.log(response);
+                    UVIndex.innerHTML = response.value;
                     currentUVEl.text("UV Index: ");
-                    currentUVEl.append(UVIndex);
+                    currentUVEl.append(response.value);
                 })
         })
 

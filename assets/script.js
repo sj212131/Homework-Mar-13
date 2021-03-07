@@ -8,12 +8,8 @@ var currentWindEl = $("#wind-speed");
 var currentUVEl = $("#UV-index");
 var APIKey = "06124cd13513f5e7de12e7d8eae9b5c0";
 
+var searchHis = [];
 
-if (localStorage.getItem("search")) {
-    searchHis = JSON.parse(localStorage.getItem("search"));
-} else {
-    searchHis = [];
-};
 console.log(searchHis);
 
 // weatherInfo("queens") test
@@ -22,6 +18,8 @@ function weatherInfo(cityName){
     var locQueryUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey;
 
     fetch(locQueryUrl)
+
+        //Current Weather 
         .then(function (response) {
             if (!response.ok){
                 throw response.json();
@@ -55,7 +53,6 @@ function weatherInfo(cityName){
                 return response.json();
             })
                 .then(function(UVRes){
-                    currentUVEl.append(UVRes.value);
                     if (UVRes.value < 3) {
                         currentUVEl.addClass("UVBackgroundLow");
                     } if (UVRes.value >= 3 && UVRes.value < 6) {
@@ -67,6 +64,7 @@ function weatherInfo(cityName){
                     } if (UVRes.value >= 11) {
                         currentUVEl.addClass("UVBackgroundExtra");
                     }   
+                    currentUVEl.append(UVRes.value);
                 })
         
 
@@ -121,11 +119,11 @@ function TempTrans(tempData) {
 }
 
 searchEl.on("click", function(){
-    var searchData = inputEl.value;
+    var searchData = inputEl[0].value;
     console.log(inputEl)
     console.log(searchData)
     weatherInfo(searchData);
-    searchHis.push({searchData});
+    searchHis.push(searchData);
     localStorage.setItem("search", searchData);
     addHistory();
 });

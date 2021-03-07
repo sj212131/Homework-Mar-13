@@ -40,10 +40,10 @@ function weatherInfo(cityName){
             currentHumidityEl.text("Humidity: " + locRes.main.humidity + " %");
             currentWindEl.text("Wind Speed: " + locRes.wind.speed + " MPH");
 
-            //http://api.openweathermap.org/data/2.5/uvi?lat={lat}&lon={lon}&appid={API key}
+            //https://api.openweathermap.org/data/2.5/uvi?lat={lat}&lon={lon}&appid={API key}
             var latVal = locRes.coord.lat;
             var lonVal = locRes.coord.lon;
-            var UVQueryURL = "http://api.openweathermap.org/data/2.5/uvi?lat=" + latVal + "&lon=" + lonVal + "&appid=" + APIKey;
+            var UVQueryURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + latVal + "&lon=" + lonVal + "&appid=" + APIKey;
             console.log(UVQueryURL)
             fetch(UVQueryURL)
                 .then(function (response) {
@@ -71,7 +71,7 @@ function weatherInfo(cityName){
 
         //api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}
 
-        var forecastQueryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + APIKey;
+        var forecastQueryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + APIKey;
         console.log(forecastQueryURL);
         fetch(forecastQueryURL)
         .then(function (response) {

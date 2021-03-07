@@ -4,6 +4,11 @@
 
 :root {
     --navBg: #7FFFD4;
+    --low: green;
+    --mod: yellow;
+    --high: orange;
+    --veryHigh: red;
+    --Extra: pink;
 ;
   }
 
@@ -31,4 +36,24 @@ h2 {
 .col {
     background-color: var(--navBg);
     text-align: center;
+}
+
+.UVBackgroundLow {
+    background-color: var(--low);
+}
+
+.UVBackgroundMod {
+    background-color: var(--mod);
+}
+
+.UVBackgroundHigh {
+    background-color: var(--high);
+}
+
+.UVBackgroundVHigh {
+    background-color: var(--veryHigh);
+}
+
+.UVBackgroundExtra {
+    background-color: var(--Extra);
 }

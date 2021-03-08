@@ -22,6 +22,7 @@ function weatherInfo(cityName){
         //Current Weather 
         .then(function (response) {
             if (!response.ok){
+                alert("Unable to get weather info, Please enter correct city name");
                 throw response.json();
             }
             return response.json();
